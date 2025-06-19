@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../hooks/useAuth.jsx';
 
 export default function Assets() {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const { token, user } = useAuth();
   const [assets, setAssets] = useState([]);
   const [bases, setBases] = useState([]);
@@ -17,8 +18,8 @@ export default function Assets() {
     async function fetchAssets() {
       setLoading(true);
       const [assetsRes, basesRes] = await Promise.all([
-        fetch('/api/assets', { headers: { Authorization: `Bearer ${token}` } }),
-        fetch('/api/bases', { headers: { Authorization: `Bearer ${token}` } })
+        fetch(`${apiUrl}/assets`, { headers: { Authorization: `Bearer ${token}` } }),
+        fetch(`${apiUrl}/bases`, { headers: { Authorization: `Bearer ${token}` } })
       ]);
       setAssets(await assetsRes.json());
       setBases(await basesRes.json());
@@ -41,7 +42,7 @@ export default function Assets() {
     if (!window.confirm('Are you sure you want to delete this asset?')) return;
     setStatus(''); setError('');
     try {
-      const res = await fetch(`/api/assets/${assetId}`, {
+      const res = await fetch(`${apiUrl}/assets/${assetId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -58,13 +59,13 @@ export default function Assets() {
     try {
       let res;
       if (editAsset) {
-        res = await fetch(`/api/assets/${editAsset._id}`, {
+        res = await fetch(`${apiUrl}/assets/${editAsset._id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
           body: JSON.stringify(form)
         });
       } else {
-        res = await fetch('/api/assets', {
+        res = await fetch(`${apiUrl}/assets`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
           body: JSON.stringify(form)

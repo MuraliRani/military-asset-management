@@ -8,6 +8,7 @@ const ROLES = [
 ];
 
 export default function Users() {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const { token, user } = useAuth();
   const [users, setUsers] = useState([]);
   const [bases, setBases] = useState([]);
@@ -25,8 +26,8 @@ export default function Users() {
     async function fetchUsers() {
       setLoading(true);
       const [usersRes, basesRes] = await Promise.all([
-        fetch('/api/users', { headers: { Authorization: `Bearer ${token}` } }),
-        fetch('/api/bases', { headers: { Authorization: `Bearer ${token}` } })
+        fetch(`${apiUrl}/users`, { headers: { Authorization: `Bearer ${token}` } }),
+        fetch(`${apiUrl}/bases`, { headers: { Authorization: `Bearer ${token}` } })
       ]);
       setUsers(await usersRes.json());
       setBases(await basesRes.json());
@@ -61,13 +62,13 @@ export default function Users() {
     try {
       let res;
       if (editUser) {
-        res = await fetch(`/api/users/${editUser.id || editUser._id}`, {
+        res = await fetch(`${apiUrl}/users/${editUser.id || editUser._id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
           body: JSON.stringify(form)
         });
       } else {
-        res = await fetch('/api/users', {
+        res = await fetch(`${apiUrl}/users`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
           body: JSON.stringify(form)
@@ -87,7 +88,7 @@ export default function Users() {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
     setStatus(''); setError('');
     try {
-      const res = await fetch(`/api/users/${userId}`, {
+      const res = await fetch(`${apiUrl}/users/${userId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });

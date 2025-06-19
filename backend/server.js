@@ -8,7 +8,13 @@ import apiRoutes from './routes/index.js';
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://military-asset-management-1-der8.onrender.com'
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;

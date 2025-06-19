@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 
 export default function Assignments() {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const { token, user } = useAuth();
   const [assignments, setAssignments] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,7 +17,7 @@ export default function Assignments() {
   useEffect(() => {
     async function fetchAssignments() {
       setLoading(true);
-      const res = await fetch('/api/assignments', { headers: { Authorization: `Bearer ${token}` } });
+      const res = await fetch(`${apiUrl}/assignments`, { headers: { Authorization: `Bearer ${token}` } });
       const data = await res.json();
       setAssignments(Array.isArray(data) ? data : []);
       setLoading(false);
@@ -42,7 +43,7 @@ export default function Assignments() {
     if (!window.confirm('Are you sure you want to delete this assignment?')) return;
     setStatus(''); setError('');
     try {
-      const res = await fetch(`/api/assignments/${assignmentId}`, {
+      const res = await fetch(`${apiUrl}/assignments/${assignmentId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -55,8 +56,8 @@ export default function Assignments() {
 
   const fetchDropdowns = async () => {
     const [assetsRes, basesRes] = await Promise.all([
-      fetch('/api/assets', { headers: { Authorization: `Bearer ${token}` } }),
-      fetch('/api/bases', { headers: { Authorization: `Bearer ${token}` } })
+      fetch(`${apiUrl}/assets`, { headers: { Authorization: `Bearer ${token}` } }),
+      fetch(`${apiUrl}/bases`, { headers: { Authorization: `Bearer ${token}` } })
     ]);
     setAssets(await assetsRes.json());
     setBases(await basesRes.json());
@@ -75,13 +76,13 @@ export default function Assignments() {
     try {
       let res;
       if (editAssignment) {
-        res = await fetch(`/api/assignments/${editAssignment._id}`, {
+        res = await fetch(`${apiUrl}/assignments/${editAssignment._id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
           body: JSON.stringify(form)
         });
       } else {
-        res = await fetch('/api/assignments', {
+        res = await fetch(`${apiUrl}/assignments`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
           body: JSON.stringify(form)

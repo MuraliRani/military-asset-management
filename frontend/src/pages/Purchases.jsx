@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 
 export default function Purchases() {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const { token, user } = useAuth();
   const [purchases, setPurchases] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,7 +17,7 @@ export default function Purchases() {
   useEffect(() => {
     async function fetchPurchases() {
       setLoading(true);
-      const res = await fetch('/api/purchases', { headers: { Authorization: `Bearer ${token}` } });
+      const res = await fetch(`${apiUrl}/purchases`, { headers: { Authorization: `Bearer ${token}` } });
       const data = await res.json();
       setPurchases(Array.isArray(data) ? data : []);
       setLoading(false);
@@ -42,7 +43,7 @@ export default function Purchases() {
     if (!window.confirm('Are you sure you want to delete this purchase?')) return;
     setStatus(''); setError('');
     try {
-      const res = await fetch(`/api/purchases/${purchaseId}`, {
+      const res = await fetch(`${apiUrl}/purchases/${purchaseId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -55,8 +56,8 @@ export default function Purchases() {
 
   const fetchDropdowns = async () => {
     const [assetsRes, basesRes] = await Promise.all([
-      fetch('/api/assets', { headers: { Authorization: `Bearer ${token}` } }),
-      fetch('/api/bases', { headers: { Authorization: `Bearer ${token}` } })
+      fetch(`${apiUrl}/assets`, { headers: { Authorization: `Bearer ${token}` } }),
+      fetch(`${apiUrl}/bases`, { headers: { Authorization: `Bearer ${token}` } })
     ]);
     setAssets(await assetsRes.json());
     setBases(await basesRes.json());
@@ -75,13 +76,13 @@ export default function Purchases() {
     try {
       let res;
       if (editPurchase) {
-        res = await fetch(`/api/purchases/${editPurchase._id}`, {
+        res = await fetch(`${apiUrl}/purchases/${editPurchase._id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
           body: JSON.stringify(form)
         });
       } else {
-        res = await fetch('/api/purchases', {
+        res = await fetch(`${apiUrl}/purchases`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
           body: JSON.stringify(form)

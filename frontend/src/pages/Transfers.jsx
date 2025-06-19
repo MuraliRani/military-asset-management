@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 
 export default function Transfers() {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const { token, user } = useAuth();
   const [transfers, setTransfers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,7 +17,7 @@ export default function Transfers() {
   useEffect(() => {
     async function fetchTransfers() {
       setLoading(true);
-      const res = await fetch('/api/transfers', { headers: { Authorization: `Bearer ${token}` } });
+      const res = await fetch(`${apiUrl}/transfers`, { headers: { Authorization: `Bearer ${token}` } });
       const data = await res.json();
       setTransfers(Array.isArray(data) ? data : []);
       setLoading(false);
@@ -42,7 +43,7 @@ export default function Transfers() {
     if (!window.confirm('Are you sure you want to delete this transfer?')) return;
     setStatus(''); setError('');
     try {
-      const res = await fetch(`/api/transfers/${transferId}`, {
+      const res = await fetch(`${apiUrl}/transfers/${transferId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -55,8 +56,8 @@ export default function Transfers() {
 
   const fetchDropdowns = async () => {
     const [assetsRes, basesRes] = await Promise.all([
-      fetch('/api/assets', { headers: { Authorization: `Bearer ${token}` } }),
-      fetch('/api/bases', { headers: { Authorization: `Bearer ${token}` } })
+      fetch(`${apiUrl}/assets`, { headers: { Authorization: `Bearer ${token}` } }),
+      fetch(`${apiUrl}/bases`, { headers: { Authorization: `Bearer ${token}` } })
     ]);
     setAssets(await assetsRes.json());
     setBases(await basesRes.json());
@@ -75,13 +76,13 @@ export default function Transfers() {
     try {
       let res;
       if (editTransfer) {
-        res = await fetch(`/api/transfers/${editTransfer._id}`, {
+        res = await fetch(`${apiUrl}/transfers/${editTransfer._id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
           body: JSON.stringify(form)
         });
       } else {
-        res = await fetch('/api/transfers', {
+        res = await fetch(`${apiUrl}/transfers`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
           body: JSON.stringify(form)

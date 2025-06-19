@@ -10,6 +10,7 @@ const metricIcons = {
 
 export default function Dashboard() {
   const { token, user } = useAuth();
+  const apiUrl = import.meta.env.VITE_API_URL;
   const [metrics, setMetrics] = useState({ assets: 0, purchases: 0, transfers: 0, assignments: 0 });
   const [recent, setRecent] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,11 +20,11 @@ export default function Dashboard() {
       setLoading(true);
       const headers = { Authorization: `Bearer ${token}` };
       const [assets, purchases, transfers, assignments, history] = await Promise.all([
-        fetch('/api/assets', { headers }),
-        fetch('/api/purchases', { headers }),
-        fetch('/api/transfers', { headers }),
-        fetch('/api/assignments', { headers }),
-        fetch('/api/history', { headers })
+        fetch(`${apiUrl}/assets`, { headers }),
+        fetch(`${apiUrl}/purchases`, { headers }),
+        fetch(`${apiUrl}/transfers`, { headers }),
+        fetch(`${apiUrl}/assignments`, { headers }),
+        fetch(`${apiUrl}/history`, { headers })
       ]);
       const [assetsData, purchasesData, transfersData, assignmentsData, historyData] = await Promise.all([
         assets.json(), purchases.json(), transfers.json(), assignments.json(), history.json()

@@ -3,6 +3,7 @@ import { useAuth } from '../hooks/useAuth';
 
 export default function History() {
   const { token, user } = useAuth();
+  const apiUrl = import.meta.env.VITE_API_URL;
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -14,12 +15,12 @@ export default function History() {
       setLoading(true);
       let data = [];
       if (user.role === 'admin') {
-        const res = await fetch(`/api/logs?page=${page}&limit=${limit}`, { headers: { Authorization: `Bearer ${token}` } });
+        const res = await fetch(`${apiUrl}/logs?page=${page}&limit=${limit}`, { headers: { Authorization: `Bearer ${token}` } });
         const json = await res.json();
         data = json.logs || [];
         setTotal(json.total || 0);
       } else {
-        const res = await fetch('/api/history', { headers: { Authorization: `Bearer ${token}` } });
+        const res = await fetch(`${apiUrl}/history`, { headers: { Authorization: `Bearer ${token}` } });
         const json = await res.json();
         data = [
           ...(json.purchases || []).map(l => ({ ...l, action: 'purchase_create', user: l.purchasedBy })),

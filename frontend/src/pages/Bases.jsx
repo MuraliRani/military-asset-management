@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../hooks/useAuth.jsx';
 
 export default function Bases() {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const { token, user } = useAuth();
   const [bases, setBases] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -15,7 +16,7 @@ export default function Bases() {
     if (user?.role !== 'admin') return;
     async function fetchBases() {
       setLoading(true);
-      const res = await fetch('/api/bases', { headers: { Authorization: `Bearer ${token}` } });
+      const res = await fetch(`${apiUrl}/bases`, { headers: { Authorization: `Bearer ${token}` } });
       const data = await res.json();
       setBases(Array.isArray(data) ? data : []);
       setLoading(false);
@@ -37,7 +38,7 @@ export default function Bases() {
     if (!window.confirm('Are you sure you want to delete this base?')) return;
     setStatus(''); setError('');
     try {
-      const res = await fetch(`/api/bases/${baseId}`, {
+      const res = await fetch(`${apiUrl}/bases/${baseId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -54,13 +55,13 @@ export default function Bases() {
     try {
       let res;
       if (editBase) {
-        res = await fetch(`/api/bases/${editBase._id}`, {
+        res = await fetch(`${apiUrl}/bases/${editBase._id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
           body: JSON.stringify(form)
         });
       } else {
-        res = await fetch('/api/bases', {
+        res = await fetch(`${apiUrl}/bases`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
           body: JSON.stringify(form)
