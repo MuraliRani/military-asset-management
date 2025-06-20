@@ -113,31 +113,43 @@ export default function Users() {
       {status && <div className="status">{status}</div>}
       {error && <div className="error">{error}</div>}
       {loading ? <div>Loading...</div> : (
-        <table>
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>Role</th>
-              <th>Assigned Base</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredUsers.map(u => (
-              <tr key={u.id || u._id}>
-                <td>{u.username}</td>
-                <td>{u.role}</td>
-                <td>{u.assignedBase?.name || ''}</td>
-                <td>
-                  <div style={{display:'flex',gap:'0.5rem',justifyContent:'center'}}>
-                    <button style={{background:'#3e5ba9',color:'#fff',padding:'0.35rem 1.1rem',borderRadius:'6px',border:'none',cursor:'pointer'}} onClick={() => handleEdit(u)}>Edit</button>
-                    <button style={{background:'#ff4d4f',color:'#fff',padding:'0.35rem 1.1rem',borderRadius:'6px',border:'none',cursor:'pointer'}} onClick={() => handleDelete(u.id || u._id)}>Delete</button>
-                  </div>
-                </td>
+        <div style={{
+          background: '#fff',
+          borderRadius: '16px',
+          boxShadow: '0 4px 24px rgba(35,41,70,0.10)',
+          padding: '0.5rem 0',
+          width: '100%',
+          minHeight: '110px',
+          marginBottom: '2.5rem',
+          overflowX: 'auto',
+          display: 'block'
+        }}>
+          <table style={{width:'100%',borderCollapse:'collapse',color:'#232946',fontSize:'1.05rem',background:'transparent'}}>
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Assigned Base</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filteredUsers.map(u => (
+                <tr key={u.id || u._id}>
+                  <td>{u.username}</td>
+                  <td>{u.role}</td>
+                  <td>{u.assignedBase?.name || ''}</td>
+                  <td>
+                    <div style={{display:'flex',gap:'0.5rem',justifyContent:'center'}}>
+                      <button style={{background:'#3e5ba9',color:'#fff',padding:'0.35rem 1.1rem',borderRadius:'6px',border:'none',cursor:'pointer'}} onClick={() => handleEdit(u)}>Edit</button>
+                      <button style={{background:'#ff4d4f',color:'#fff',padding:'0.35rem 1.1rem',borderRadius:'6px',border:'none',cursor:'pointer'}} onClick={() => handleDelete(u.id || u._id)}>Delete</button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
       {showModal && (
         <div className="modal">

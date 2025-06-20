@@ -105,7 +105,17 @@ export default function Purchases() {
       {status && <div className="status">{status}</div>}
       {error && <div className="error">{error}</div>}
       {loading ? <div>Loading...</div> : (
-        <div style={{overflowX:'auto',marginBottom:'2.5rem'}}>
+        <div style={{
+          background: '#fff',
+          borderRadius: '16px',
+          boxShadow: '0 4px 24px rgba(35,41,70,0.10)',
+          padding: '0.5rem 0',
+          width: '100%',
+          minHeight: '110px',
+          marginBottom: '2.5rem',
+          overflowX: 'auto',
+          display: 'block'
+        }}>
           <table style={{width:'100%',borderCollapse:'collapse',color:'#232946',fontSize:'1.05rem',background:'transparent'}}>
             <thead>
               <tr style={{color:'#00b86b',fontWeight:700,background:'#f7faff'}}>
