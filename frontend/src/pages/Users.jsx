@@ -124,7 +124,7 @@ export default function Users() {
           overflowX: 'auto',
           display: 'block'
         }}>
-          <table style={{width:'100%',borderCollapse:'collapse',color:'#232946',fontSize:'1.05rem',background:'transparent'}}>
+          <table style={{width:'100%',borderCollapse:'collapse',color:'#232946',fontSize:'1.05rem',background:'#fff'}}>
             <thead>
               <tr>
                 <th>Username</th>

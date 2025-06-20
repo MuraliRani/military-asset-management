@@ -38,18 +38,8 @@ export default function History() {
     <div style={{maxWidth:900,margin:'2.5rem auto 0 auto',padding:'0 1rem'}}>
       <h2 style={{fontWeight:700,marginBottom:'1.5rem',color:'#232946',textAlign:'left'}}>History Logs</h2>
       {loading ? <div>Loading...</div> : (
-        <div style={{
-          background: '#fff',
-          borderRadius: '16px',
-          boxShadow: '0 4px 24px rgba(35,41,70,0.10)',
-          padding: '0.5rem 0',
-          width: '100%',
-          minHeight: '110px',
-          marginBottom: '2.5rem',
-          overflowX: 'auto',
-          display: 'block'
-        }}>
-          <table style={{width:'100%',borderCollapse:'collapse',color:'#232946',fontSize:'1.05rem',background:'transparent'}}>
+        <div style={{overflowX:'auto',marginBottom:'2.5rem'}}>
+          <table style={{width:'100%',borderCollapse:'collapse',color:'#232946',fontSize:'1.05rem',background:'#fff'}}>
             <thead>
               <tr style={{color:'#00b86b',fontWeight:700,background:'#f7faff'}}>
                 <th style={{padding:'1rem 1.2rem',textAlign:'center'}}>Action</th>
