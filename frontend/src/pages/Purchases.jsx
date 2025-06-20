@@ -114,7 +114,7 @@ export default function Purchases() {
                 <th style={{padding:'1rem 1.2rem',textAlign:'left'}}>Base</th>
                 <th style={{padding:'1rem 1.2rem',textAlign:'left'}}>Date</th>
                 <th style={{padding:'1rem 1.2rem',textAlign:'left'}}>By</th>
-                <th style={{padding:'1rem 1.2rem',textAlign:'center'}}>Actions</th>
+                <th style={{padding:'1rem 1.2rem',textAlign:'center',minWidth:'160px'}}>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -128,7 +128,7 @@ export default function Purchases() {
                   <td style={{padding:'0.85rem 1.2rem',textAlign:'center'}}>
                     <div style={{display:'flex',gap:'0.5rem',justifyContent:'center',flexDirection:'row',alignItems:'center',width:'100%'}}>
                       <button style={{background:'#3e5ba9',color:'#fff',padding:'0.5rem 1.2rem',fontSize:'1rem',borderRadius:'6px',border:'none',fontWeight:600,cursor:'pointer',minWidth:'80px'}} onClick={() => handleEdit(p)}>Edit</button>
-                      <button style={{background:'#ff4d4f',color:'#fff',padding:'0.5rem 1.2rem',fontSize:'1rem',borderRadius:'6px',border:'none',fontWeight:600,cursor:'pointer',minWidth:'80px'}} onClick={() => handleDelete(p._id)}>Delete</button>
+                      <button style={{background:'#ff4d4f',color:'#fff',padding:'0.5rem 1.2rem',fontSize:'1rem',borderRadius:'6px',border:'none',fontWeight:600,cursor:'pointer',minWidth:'90px',whiteSpace:'nowrap'}} onClick={() => handleDelete(p._id)}>Delete</button>
                     </div>
                   </td>
                 </tr>
