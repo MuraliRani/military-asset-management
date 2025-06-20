@@ -33,7 +33,7 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // Root route
 app.get('/', (req, res) => {
-  res.send('Military Asset Management System API');
+  res.send('Server is running successfully ');
 });
 
 app.use('/api', apiRoutes);
