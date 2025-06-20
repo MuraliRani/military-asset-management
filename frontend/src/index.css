@@ -534,10 +534,44 @@ tr:hover {
   }
 }
 
-.dashboard .recent-activity-table-container {
+.recent-activity-table-container {
   max-height: 320px;
   overflow-y: auto;
   overflow-x: auto;
+  width: 100%;
+}
+
+.recent-activity-table-container table {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(35,41,70,0.08);
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.05rem;
+  table-layout: fixed;
+}
+
+.recent-activity-table-container th,
+.recent-activity-table-container td {
+  padding: 0.85rem 1.2rem;
+  text-align: left;
+  min-width: 120px;
+  background: none;
+  color: #232946;
+}
+
+.recent-activity-table-container tr {
+  border-bottom: 1px solid #e0e7ef;
+}
+
+.recent-activity-table-container tr:last-child td {
+  border-bottom: none;
+}
+
+.recent-activity-table-container th {
+  background: #f7faff;
+  color: #3e5ba9;
+  font-weight: 700;
 }
 
 .purchases-page button,
@@ -579,37 +613,4 @@ button.add-btn:hover, .add-btn:hover,
 .users-page > button:not([type]):hover {
   background: #254080 !important;
   color: #fff !important;
-}
-
-/* Make dashboard recent activity table match other tables */
-.recent-activity-table-container table {
-  background: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 2px 12px rgba(35,41,70,0.08);
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 1.05rem;
-}
-
-.recent-activity-table-container th,
-.recent-activity-table-container td {
-  padding: 0.85rem 1.2rem;
-  text-align: left;
-  min-width: 120px;
-  background: #fff;
-  color: #232946;
-}
-
-.recent-activity-table-container tr {
-  border-bottom: 1px solid #e0e7ef;
-}
-
-.recent-activity-table-container tr:last-child td {
-  border-bottom: none;
-}
-
-.recent-activity-table-container th {
-  background: #f7faff;
-  color: #3e5ba9;
-  font-weight: 700;
 } 
