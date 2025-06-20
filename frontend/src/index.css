@@ -291,7 +291,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
-  background: rgba(255,255,255,0.95);
+  background: transparent;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 2px 16px rgba(35,41,70,0.08);
@@ -306,10 +306,12 @@ th, td {
   padding: 0.8rem 1.1rem;
   border-bottom: 1px solid #e0e7ef;
   text-align: left;
+  background: none;
+  color: inherit;
 }
 th {
-  background: #e0e7ef;
-  color: #3e5ba9;
+  background: none;
+  color: inherit;
   font-weight: 700;
 }
 tr:last-child td {
@@ -577,4 +579,37 @@ button.add-btn:hover, .add-btn:hover,
 .users-page > button:not([type]):hover {
   background: #254080 !important;
   color: #fff !important;
+}
+
+/* Make dashboard recent activity table match other tables */
+.recent-activity-table-container table {
+  background: transparent;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(35,41,70,0.08);
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.05rem;
+}
+
+.recent-activity-table-container th,
+.recent-activity-table-container td {
+  padding: 0.85rem 1.2rem;
+  text-align: left;
+  min-width: 120px;
+  background: #fff;
+  color: #232946;
+}
+
+.recent-activity-table-container tr {
+  border-bottom: 1px solid #e0e7ef;
+}
+
+.recent-activity-table-container tr:last-child td {
+  border-bottom: none;
+}
+
+.recent-activity-table-container th {
+  background: #f7faff;
+  color: #3e5ba9;
+  font-weight: 700;
 } 
