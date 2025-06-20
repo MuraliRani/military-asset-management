@@ -7,7 +7,7 @@ import { validateAssignment } from '../middleware/validate.js';
 
 const router = express.Router();
 
-// Get all assignments (admin: all, others: only their base)
+// Get all assignments 
 router.get('/', authenticate, async (req, res) => {
   try {
     let query = {};
@@ -21,7 +21,7 @@ router.get('/', authenticate, async (req, res) => {
   }
 });
 
-// Create assignment (admin, base_commander)
+// Create assignment 
 router.post('/', authenticate, authorize(['admin', 'base_commander']), validateAssignment, async (req, res) => {
   try {
     const assignment = new Assignment({ ...req.body, assignedBy: req.user._id });
@@ -33,7 +33,7 @@ router.post('/', authenticate, authorize(['admin', 'base_commander']), validateA
   }
 });
 
-// Update assignment (admin, base_commander)
+// Update assignment
 router.put('/:id', authenticate, authorize(['admin', 'base_commander']), async (req, res) => {
   try {
     const assignment = await Assignment.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -44,7 +44,7 @@ router.put('/:id', authenticate, authorize(['admin', 'base_commander']), async (
   }
 });
 
-// Delete assignment (admin, base_commander)
+// Delete assignment 
 router.delete('/:id', authenticate, authorize(['admin', 'base_commander']), async (req, res) => {
   try {
     const assignment = await Assignment.findByIdAndDelete(req.params.id);

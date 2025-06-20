@@ -8,7 +8,7 @@ import { validateUser } from '../middleware/validate.js';
 
 const router = express.Router();
 
-// List all users (admin only)
+// List all users 
 router.get('/', authenticate, authorize(['admin']), async (req, res) => {
   try {
     const users = await User.find().select('-password').populate('assignedBase');
@@ -18,7 +18,7 @@ router.get('/', authenticate, authorize(['admin']), async (req, res) => {
   }
 });
 
-// Create user (admin only)
+// Create user 
 router.post('/', authenticate, authorize(['admin']), validateUser, async (req, res) => {
   try {
     const { username, password, role, assignedBase } = req.body;
@@ -32,7 +32,7 @@ router.post('/', authenticate, authorize(['admin']), validateUser, async (req, r
   }
 });
 
-// Update user (admin only)
+// Update user 
 router.put('/:id', authenticate, authorize(['admin']), async (req, res) => {
   try {
     const { username, password, role, assignedBase } = req.body;
@@ -48,7 +48,7 @@ router.put('/:id', authenticate, authorize(['admin']), async (req, res) => {
   }
 });
 
-// Delete user (admin only)
+// Delete user 
 router.delete('/:id', authenticate, authorize(['admin']), async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);

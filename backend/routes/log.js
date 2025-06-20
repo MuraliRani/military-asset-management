@@ -5,7 +5,6 @@ import { authorize } from '../middleware/roles.js';
 
 const router = express.Router();
 
-// GET /api/logs?page=1&limit=20&action=purchase_create
 router.get('/', authenticate, authorize(['admin']), async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;

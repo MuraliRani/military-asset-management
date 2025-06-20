@@ -4,7 +4,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import apiRoutes from './routes/index.js';
 
-// Load env variables
 dotenv.config();
 
 const app = express();
@@ -47,5 +46,3 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-// End of file 

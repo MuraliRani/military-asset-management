@@ -5,7 +5,7 @@ import { authorize } from '../middleware/roles.js';
 
 const router = express.Router();
 
-// Get all assets (admin: all, others: only their base)
+// Get all assets 
 router.get('/', authenticate, async (req, res) => {
   try {
     let query = {};
@@ -19,7 +19,7 @@ router.get('/', authenticate, async (req, res) => {
   }
 });
 
-// Create asset (admin, base_commander)
+// Create asset 
 router.post('/', authenticate, authorize(['admin', 'base_commander']), async (req, res) => {
   try {
     const asset = new Asset(req.body);
@@ -30,7 +30,7 @@ router.post('/', authenticate, authorize(['admin', 'base_commander']), async (re
   }
 });
 
-// Update asset (admin, base_commander)
+// Update asset 
 router.put('/:id', authenticate, authorize(['admin', 'base_commander']), async (req, res) => {
   try {
     const asset = await Asset.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -41,7 +41,7 @@ router.put('/:id', authenticate, authorize(['admin', 'base_commander']), async (
   }
 });
 
-// Delete asset (admin, base_commander)
+// Delete asset 
 router.delete('/:id', authenticate, authorize(['admin', 'base_commander']), async (req, res) => {
   try {
     const asset = await Asset.findByIdAndDelete(req.params.id);

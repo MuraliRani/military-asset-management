@@ -6,7 +6,7 @@ import { validatePurchase } from '../middleware/validate.js';
 
 const router = express.Router();
 
-// Get all purchases (admin: all, others: only their base)
+// Get all purchases
 router.get('/', authenticate, async (req, res) => {
   try {
     let query = {};
@@ -20,7 +20,7 @@ router.get('/', authenticate, async (req, res) => {
   }
 });
 
-// Create purchase (admin, logistics_officer)
+// Create purchase 
 router.post('/', authenticate, authorize(['admin', 'logistics_officer']), validatePurchase, async (req, res) => {
   try {
     const purchase = new Purchase({ ...req.body, purchasedBy: req.user._id });
@@ -33,7 +33,7 @@ router.post('/', authenticate, authorize(['admin', 'logistics_officer']), valida
   }
 });
 
-// Update purchase (admin, logistics_officer)
+// Update purchase 
 router.put('/:id', authenticate, authorize(['admin', 'logistics_officer']), async (req, res) => {
   try {
     const purchase = await Purchase.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -44,7 +44,7 @@ router.put('/:id', authenticate, authorize(['admin', 'logistics_officer']), asyn
   }
 });
 
-// Delete purchase (admin, logistics_officer)
+// Delete purchase
 router.delete('/:id', authenticate, authorize(['admin', 'logistics_officer']), async (req, res) => {
   try {
     const purchase = await Purchase.findByIdAndDelete(req.params.id);

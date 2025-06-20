@@ -99,14 +99,14 @@ export default function Assets() {
           overflowX: 'auto',
           display: 'block'
         }}>
-          <table style={{width:'100%',borderCollapse:'collapse',color:'#232946',fontSize:'1.05rem',background:'transparent'}}>
+          <table style={{width:'1200px',minWidth:'100%',maxWidth:'none',borderCollapse:'collapse',color:'#232946',fontSize:'1.05rem',background:'#fff'}}>
             <thead>
               <tr style={{color:'#00b86b',fontWeight:700,background:'#f7faff'}}>
                 <th style={{padding:'1rem 1.2rem',textAlign:'left'}}>Name</th>
                 <th style={{padding:'1rem 1.2rem',textAlign:'left'}}>Type</th>
                 <th style={{padding:'1rem 1.2rem',textAlign:'center'}}>Quantity</th>
                 <th style={{padding:'1rem 1.2rem',textAlign:'left'}}>Base</th>
-                <th style={{padding:'1rem 1.2rem',textAlign:'center'}}>Actions</th>
+                <th style={{padding:'1rem 1.2rem',textAlign:'center',minWidth:'160px'}}>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -119,7 +119,7 @@ export default function Assets() {
                   <td style={{padding:'0.85rem 1.2rem',textAlign:'center'}}>
                     <div style={{display:'flex',gap:'0.5rem',justifyContent:'center',flexDirection:'row',alignItems:'center',width:'100%'}}>
                       <button style={{background:'#3e5ba9',color:'#fff',padding:'0.5rem 1.2rem',fontSize:'1rem',borderRadius:'6px',border:'none',fontWeight:600,cursor:'pointer',minWidth:'80px'}} onClick={() => handleEdit(a)}>Edit</button>
-                      <button style={{background:'#ff4d4f',color:'#fff',padding:'0.5rem 1.2rem',fontSize:'1rem',borderRadius:'6px',border:'none',fontWeight:600,cursor:'pointer',minWidth:'80px'}} onClick={() => handleDelete(a._id)}>Delete</button>
+                      <button style={{background:'#ff4d4f',color:'#fff',padding:'0.5rem 1.2rem',fontSize:'1rem',borderRadius:'6px',border:'none',fontWeight:600,cursor:'pointer',minWidth:'90px',whiteSpace:'nowrap'}} onClick={() => handleDelete(a._id)}>Delete</button>
                     </div>
                   </td>
                 </tr>

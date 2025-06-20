@@ -5,7 +5,7 @@ import { authorize } from '../middleware/roles.js';
 
 const router = express.Router();
 
-// Get all bases (all roles)
+// Get all bases 
 router.get('/', authenticate, async (req, res) => {
   try {
     const bases = await Base.find();
@@ -15,7 +15,7 @@ router.get('/', authenticate, async (req, res) => {
   }
 });
 
-// Create base (admin only)
+// Create base 
 router.post('/', authenticate, authorize(['admin']), async (req, res) => {
   try {
     const base = new Base(req.body);
@@ -26,7 +26,7 @@ router.post('/', authenticate, authorize(['admin']), async (req, res) => {
   }
 });
 
-// Update base (admin only)
+// Update base 
 router.put('/:id', authenticate, authorize(['admin']), async (req, res) => {
   try {
     const base = await Base.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -37,7 +37,7 @@ router.put('/:id', authenticate, authorize(['admin']), async (req, res) => {
   }
 });
 
-// Delete base (admin only)
+// Delete base 
 router.delete('/:id', authenticate, authorize(['admin']), async (req, res) => {
   try {
     const base = await Base.findByIdAndDelete(req.params.id);

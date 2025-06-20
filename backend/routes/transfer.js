@@ -7,7 +7,7 @@ import { validateTransfer } from '../middleware/validate.js';
 
 const router = express.Router();
 
-// Get all transfers (admin: all, others: only their base as fromBase or toBase)
+// Get all transfers
 router.get('/', authenticate, async (req, res) => {
   try {
     let query = {};
@@ -24,7 +24,7 @@ router.get('/', authenticate, async (req, res) => {
   }
 });
 
-// Create transfer (admin, logistics_officer)
+// Create transfer
 router.post('/', authenticate, authorize(['admin', 'logistics_officer']), validateTransfer, async (req, res) => {
   try {
     const transfer = new Transfer({ ...req.body, transferredBy: req.user._id });
@@ -36,7 +36,7 @@ router.post('/', authenticate, authorize(['admin', 'logistics_officer']), valida
   }
 });
 
-// Update transfer (admin, logistics_officer)
+// Update transfer 
 router.put('/:id', authenticate, authorize(['admin', 'logistics_officer']), async (req, res) => {
   try {
     const transfer = await Transfer.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -47,7 +47,7 @@ router.put('/:id', authenticate, authorize(['admin', 'logistics_officer']), asyn
   }
 });
 
-// Delete transfer (admin, logistics_officer)
+// Delete transfer 
 router.delete('/:id', authenticate, authorize(['admin', 'logistics_officer']), async (req, res) => {
   try {
     const transfer = await Transfer.findByIdAndDelete(req.params.id);

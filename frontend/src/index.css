@@ -1,13 +1,9 @@
-/* General Reset and Box Sizing */
-*,
-*::before,
-*::after {
+*,*::before,*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Body and Main Container */
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   background: linear-gradient(135deg, #232526 0%, #00ff90 100%);
@@ -16,7 +12,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Responsive Container */
 .responsive-container {
   max-width: 900px;
   margin: 2.5rem auto 0 auto;
@@ -28,7 +23,7 @@ body {
   overflow-x: auto !important;
 }
 
-/* Responsive Table */
+
 table {
   width: 100%;
   max-width: 100%;
@@ -107,7 +102,6 @@ tr:hover {
   }
 }
 
-/* Responsive Buttons and Inputs */
 button, input, select {
   font-size: 1rem;
   border-radius: 0.5rem;
