@@ -59,18 +59,8 @@ export default function Dashboard() {
         <div style={{background:'#fff',border:'1.5px solid #ff4d4f',borderRadius:'12px',padding:'1.2rem 2rem',minWidth:'160px',textAlign:'center',fontWeight:600,color:'#232946',boxShadow:'0 2px 8px rgba(255,77,79,0.07)'}}>Assignments<br/><span style={{fontSize:'2rem',fontWeight:700}}>{metrics.assignments}</span></div>
       </div>
       <h3 style={{color:'#232946',marginBottom:'1rem',fontWeight:700}}>Recent Activity</h3>
-      <div style={{
-        background: 'linear-gradient(135deg, #f7faff 60%, #e0e7ef 100%)',
-        borderRadius: '16px',
-        boxShadow: '0 4px 24px rgba(35,41,70,0.10)',
-        padding: '0.5rem 0',
-        width: '100%',
-        minHeight: '110px',
-        marginBottom: '2.5rem',
-        overflowX: 'auto',
-        display: 'block'
-      }}>
-        <table style={{width:'100%',borderCollapse:'collapse',color:'#232946',fontSize:'1.05rem',background:'transparent'}}>
+      <div style={{overflowX:'auto',marginBottom:'2.5rem'}}>
+        <table style={{width:'100%',borderCollapse:'collapse',color:'#232946',fontSize:'1.05rem',background:'#fff'}}>
           <thead>
             <tr style={{color:'#00b86b',fontWeight:700,background:'#f7faff'}}>
               <th style={{padding:'1rem 1.2rem',textAlign:'center'}}>Action</th>
