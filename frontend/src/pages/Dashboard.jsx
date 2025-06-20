@@ -60,7 +60,7 @@ export default function Dashboard() {
       </div>
       <h3 style={{color:'#232946',marginBottom:'1rem',fontWeight:700}}>Recent Activity</h3>
       <div style={{overflowX:'auto',marginBottom:'2.5rem'}}>
-        <table style={{width:'100%',borderCollapse:'collapse',color:'#232946',fontSize:'1.05rem',background:'transparent'}}>
+        <table style={{width:'100%',borderCollapse:'collapse',color:'#232946',fontSize:'1.05rem',background:'#fff'}}>
           <thead>
             <tr style={{color:'#00b86b',fontWeight:700,background:'#f7faff'}}>
               <th style={{padding:'1rem 1.2rem',textAlign:'center'}}>Action</th>
