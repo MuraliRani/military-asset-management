@@ -126,9 +126,9 @@ export default function Purchases() {
                   <td style={{padding:'0.85rem 1.2rem'}}>{p.date && new Date(p.date).toLocaleString()}</td>
                   <td style={{padding:'0.85rem 1.2rem'}}>{p.purchasedBy?.username}</td>
                   <td style={{padding:'0.85rem 1.2rem',textAlign:'center'}}>
-                    <div style={{display:'flex',gap:'0.5rem',justifyContent:'center'}}>
-                      <button style={{background:'#3e5ba9',color:'#fff'}} onClick={() => handleEdit(p)}>Edit</button>
-                      <button style={{background:'#ff4d4f',color:'#fff'}} onClick={() => handleDelete(p._id)}>Delete</button>
+                    <div style={{display:'flex',gap:'0.5rem',justifyContent:'center',flexDirection:'row',alignItems:'center'}}>
+                      <button style={{background:'#3e5ba9',color:'#fff',padding:'0.5rem 1.2rem',fontSize:'1rem',borderRadius:'6px',border:'none',fontWeight:600,cursor:'pointer'}} onClick={() => handleEdit(p)}>Edit</button>
+                      <button style={{background:'#ff4d4f',color:'#fff',padding:'0.5rem 1.2rem',fontSize:'1rem',borderRadius:'6px',border:'none',fontWeight:600,cursor:'pointer'}} onClick={() => handleDelete(p._id)}>Delete</button>
                     </div>
                   </td>
                 </tr>
