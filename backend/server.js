@@ -8,11 +8,17 @@ import apiRoutes from './routes/index.js';
 dotenv.config();
 
 const app = express();
+
+const allowedOrigins = (process.env.CORS_ORIGIN || 'http://localhost:5173').split(',');
+
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    'https://military-asset-management-1-der8.onrender.com'
-  ],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 app.use(express.json());
