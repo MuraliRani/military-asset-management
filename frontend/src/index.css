@@ -29,17 +29,38 @@ body {
 /* Responsive Table */
 table {
   width: 100%;
-  border-collapse: collapse;
-  font-size: 1.05rem;
-  background: transparent;
-  overflow-x: auto;
-  display: block;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 1.08rem;
+  background: linear-gradient(135deg, #2fd8e6 0%, #6ee2f5 100%);
+  color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  table-layout: fixed;
+  box-shadow: 0 4px 24px rgba(35,41,70,0.10);
 }
-
+thead {
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+}
 th, td {
-  padding: 0.85rem 1.2rem;
+  padding: 1rem 1.2rem;
   text-align: left;
-  min-width: 120px;
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+  border-right: 1px solid rgba(255,255,255,0.10);
+  word-break: break-word;
+}
+th:last-child, td:last-child {
+  border-right: none;
+}
+tr:last-child td {
+  border-bottom: none;
+}
+tr {
+  transition: background 0.2s;
+}
+tr:hover {
+  background: rgba(255,255,255,0.08);
 }
 
 @media (max-width: 700px) {
@@ -284,42 +305,6 @@ form {
   flex-direction: column;
   gap: 0.5rem;
   align-items: stretch;
-}
-
-/* Table styles */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-  background: transparent;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 16px rgba(35,41,70,0.08);
-  animation: fadeInTable 0.7s;
-  backdrop-filter: blur(2px);
-}
-@keyframes fadeInTable {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: none; }
-}
-th, td {
-  padding: 0.8rem 1.1rem;
-  border-bottom: 1px solid #e0e7ef;
-  text-align: left;
-  background: none;
-  color: inherit;
-}
-th {
-  background: none;
-  color: inherit;
-  font-weight: 700;
-}
-tr:last-child td {
-  border-bottom: none;
-}
-tr:hover {
-  background: #f0f4ff;
-  transition: background 0.2s;
 }
 
 /* Modal styles */
@@ -613,4 +598,10 @@ button.add-btn:hover, .add-btn:hover,
 .users-page > button:not([type]):hover {
   background: #254080 !important;
   color: #fff !important;
+}
+
+/* Remove extra backgrounds from containers */
+.responsive-container, .recent-activity-table-container, .main-content {
+  background: none !important;
+  box-shadow: none !important;
 } 
