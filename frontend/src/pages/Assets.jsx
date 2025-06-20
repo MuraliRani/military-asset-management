@@ -117,9 +117,9 @@ export default function Assets() {
                   <td style={{padding:'0.85rem 1.2rem',textAlign:'center'}}>{a.quantity}</td>
                   <td style={{padding:'0.85rem 1.2rem'}}>{a.base?.name}</td>
                   <td style={{padding:'0.85rem 1.2rem',textAlign:'center'}}>
-                    <div style={{display:'flex',gap:'0.5rem',justifyContent:'center',flexDirection:'row',alignItems:'center'}}>
-                      <button style={{background:'#3e5ba9',color:'#fff',padding:'0.5rem 1.2rem',fontSize:'1rem',borderRadius:'6px',border:'none',fontWeight:600,cursor:'pointer'}} onClick={() => handleEdit(a)}>Edit</button>
-                      <button style={{background:'#ff4d4f',color:'#fff',padding:'0.5rem 1.2rem',fontSize:'1rem',borderRadius:'6px',border:'none',fontWeight:600,cursor:'pointer'}} onClick={() => handleDelete(a._id)}>Delete</button>
+                    <div style={{display:'flex',gap:'0.5rem',justifyContent:'center',flexDirection:'row',alignItems:'center',width:'100%'}}>
+                      <button style={{background:'#3e5ba9',color:'#fff',padding:'0.5rem 1.2rem',fontSize:'1rem',borderRadius:'6px',border:'none',fontWeight:600,cursor:'pointer',minWidth:'80px'}} onClick={() => handleEdit(a)}>Edit</button>
+                      <button style={{background:'#ff4d4f',color:'#fff',padding:'0.5rem 1.2rem',fontSize:'1rem',borderRadius:'6px',border:'none',fontWeight:600,cursor:'pointer',minWidth:'80px'}} onClick={() => handleDelete(a._id)}>Delete</button>
                     </div>
                   </td>
                 </tr>
