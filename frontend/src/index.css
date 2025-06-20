@@ -503,8 +503,10 @@ tr:hover {
 
 @media (max-width: 700px) {
   .main-content, .login-container form, .modal form {
-    padding: 1rem;
-    min-width: unset;
+    padding: 1rem 0.5rem;
+    width: 98vw;
+    min-width: 0;
+    box-sizing: border-box;
   }
   .metrics {
     flex-direction: column;
@@ -522,6 +524,11 @@ tr:hover {
   .login-container .info-buttons {
     flex-direction: column;
     gap: 0.7rem;
+  }
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
   }
 }
 
